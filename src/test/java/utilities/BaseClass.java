@@ -23,7 +23,7 @@ public String readDataFromPropertyFile(String key) {
 
     Properties properties = new Properties();
 
-    try (FileReader fileReader = new FileReader("./config.properties")) {
+    try (FileReader fileReader = new FileReader("./configFile/config.properties")) {
 
         properties.load(fileReader);
         return properties.getProperty(key);
