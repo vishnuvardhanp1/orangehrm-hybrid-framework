@@ -24,6 +24,9 @@ public class EmployeeListPage extends BaseClass {
 
     @FindBy(xpath = "//button[@type='reset']")
     private WebElement btnReset;
+    
+    @FindBy(xpath="//div[@role='rowgroup']")
+    private WebElement employeeResult;
 
     public void enterEmployeeName(String employeeName) {
         sendKeys(txtEmployeeName, employeeName);
@@ -45,5 +48,9 @@ public class EmployeeListPage extends BaseClass {
         enterEmployeeName(employeeName);
         enterEmployeeId(employeeId);
         clickSearch();
+    }
+    
+    public boolean isEmployeeDisplayed() {
+        return isElementDisplayed(employeeResult);
     }
 }
