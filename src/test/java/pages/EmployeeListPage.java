@@ -27,6 +27,9 @@ public class EmployeeListPage extends BaseClass {
     
     @FindBy(xpath="//div[@role='rowgroup']")
     private WebElement employeeResult;
+    
+    @FindBy(xpath = "//button[.//i[contains(@class,'bi-pencil-fill')]]")
+    private WebElement btnEdit;
 
     public void enterEmployeeName(String employeeName) {
         sendKeys(txtEmployeeName, employeeName);
@@ -48,6 +51,10 @@ public class EmployeeListPage extends BaseClass {
         enterEmployeeName(employeeName);
         enterEmployeeId(employeeId);
         clickSearch();
+    }
+    
+    public void clickEdit() {
+        clickOnAElement(btnEdit);
     }
     
     public boolean isEmployeeDisplayed() {
