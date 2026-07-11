@@ -37,9 +37,11 @@ public class EditEmployeePage extends BaseClass {
     }
 
     public void clickSave() {
-    	System.out.println(txtMiddleName.getAttribute("value"));
-    	System.out.println(txtLastName.getAttribute("value"));
+
+        waitUntilElementIsClickable(btnSave,10);
+
         clickOnAElement(btnSave);
+
     }
 
     public void editEmployee(String middleName, String lastName) {

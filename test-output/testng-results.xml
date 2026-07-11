@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-07-10T20:26:10 IST" name="Default suite" finished-at="2026-07-10T20:26:24 IST" duration-ms="13597">
+  <suite started-at="2026-07-11T17:59:53 IST" name="Default suite" finished-at="2026-07-11T18:00:07 IST" duration-ms="13479">
     <groups>
     </groups>
-    <test started-at="2026-07-10T20:26:10 IST" name="Default test" finished-at="2026-07-10T20:26:24 IST" duration-ms="13597">
+    <test started-at="2026-07-11T17:59:53 IST" name="Default test" finished-at="2026-07-11T18:00:07 IST" duration-ms="13479">
       <class name="testClasses.EditEmployeeTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:testClasses.EditEmployeeTest@229f66ed]" started-at="2026-07-10T20:26:10 IST" name="setUp" finished-at="2026-07-10T20:26:16 IST" duration-ms="5145" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:testClasses.EditEmployeeTest@229f66ed]" started-at="2026-07-11T17:59:53 IST" name="setUp" finished-at="2026-07-11T17:59:58 IST" duration-ms="4854" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="verifyEditEmployee()[pri:0, instance:testClasses.EditEmployeeTest@229f66ed]" started-at="2026-07-10T20:26:16 IST" name="verifyEditEmployee" finished-at="2026-07-10T20:26:24 IST" duration-ms="8012" status="PASS">
+        <test-method signature="verifyEditEmployee()[pri:0, instance:testClasses.EditEmployeeTest@229f66ed]" started-at="2026-07-11T17:59:58 IST" name="verifyEditEmployee" finished-at="2026-07-11T18:00:06 IST" duration-ms="8096" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyEditEmployee -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:testClasses.EditEmployeeTest@229f66ed]" started-at="2026-07-10T20:26:24 IST" name="tearDown" finished-at="2026-07-10T20:26:24 IST" duration-ms="259" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testClasses.EditEmployeeTest@229f66ed]" started-at="2026-07-11T18:00:06 IST" name="tearDown" finished-at="2026-07-11T18:00:07 IST" duration-ms="265" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

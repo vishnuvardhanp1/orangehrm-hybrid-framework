@@ -12,6 +12,7 @@ import pages.DashboardPage;
 import pages.LoginPage;
 import pages.PIMPage;
 import utilities.BaseClass;
+import utilities.EmployeeDataProvider;
 import utilities.ExcelUtility;
 import utilities.ListenerImplementation;
 import utilities.RetryImplementation;
@@ -35,28 +36,35 @@ public class AddEmployeeTest extends BaseClass {
         addEmployeePage = new AddEmployeePage();
     }
 
-    @Test(retryAnalyzer = RetryImplementation.class)
-    public void verifyAddEmployee() {
+    
+    @Test(
+            dataProvider = "EmployeeData",
+            dataProviderClass = EmployeeDataProvider.class,
+            retryAnalyzer = RetryImplementation.class)
+
+    public void verifyAddEmployee(
+            String firstName,
+            String middleName,
+            String lastName) {
 
         loginPage.login(
-                ExcelUtility.readData(1,0,"LoginSheet"),
-                ExcelUtility.readData(1,1,"LoginSheet"));
+                ExcelUtility.readData(1, 0, "LoginSheet"),
+                ExcelUtility.readData(1, 1, "LoginSheet"));
 
         dashboardPage.clickPIM();
 
         pimPage.clickAddEmployee();
 
         addEmployeePage.addEmployee(
-                ExcelUtility.readData(1,0,"EmployeeSheet"),
-                ExcelUtility.readData(1,1,"EmployeeSheet"),
-                ExcelUtility.readData(1,2,"EmployeeSheet"));
-        
+                firstName,
+                middleName,
+                lastName);
+
         Assert.assertTrue(
                 addEmployeePage.isPersonalDetailsDisplayed(),
-                "Employee was not added successfully");
-
+                "Employee " + firstName + " " + lastName
+                        + " was not added successfully.");
     }
-
     @AfterMethod
     public void tearDown() {
 
