@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is an end-to-end UI Automation Framework developed for the OrangeHRM application using Selenium WebDriver and TestNG. The framework follows a Hybrid Framework approach by combining the Page Object Model (POM), Data-Driven Testing, reusable utility classes, reporting, and logging to provide a scalable, maintainable, and reusable automation solution.
+This project is an end-to-end UI Automation Framework developed for the OrangeHRM application using Selenium WebDriver and TestNG. The framework follows a Hybrid Framework approach by combining PageFactory, Data-Driven Testing, reusable utility classes, reporting, and logging to provide a scalable, maintainable, and reusable automation solution.
 
 ---
 
@@ -12,7 +12,7 @@ This project is an end-to-end UI Automation Framework developed for the OrangeHR
 * Selenium WebDriver
 * TestNG
 * Maven
-* Page Object Model (POM)
+* PageFactory
 * Apache POI (Excel Data-Driven Testing)
 * Extent Reports
 * Log4j2 Logging
@@ -23,8 +23,7 @@ This project is an end-to-end UI Automation Framework developed for the OrangeHR
 # Framework Features
 
 * Hybrid Automation Framework
-* Page Object Model (POM)
-* PageFactory Implementation
+* PageFactory Design Pattern
 * Data-Driven Testing using Excel
 * Reusable Utility Classes
 * Explicit Waits
