@@ -10,7 +10,7 @@ import utilities.BaseClass;
 public class EditEmployeePage extends BaseClass {
 
     public EditEmployeePage() {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     @FindBy(name = "middleName")

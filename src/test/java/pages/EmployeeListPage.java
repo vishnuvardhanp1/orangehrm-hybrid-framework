@@ -10,7 +10,7 @@ import utilities.BaseClass;
 public class EmployeeListPage extends BaseClass {
 
     public EmployeeListPage() {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     @FindBy(xpath = "(//input[@placeholder='Type for hints...'])[1]")
@@ -30,6 +30,15 @@ public class EmployeeListPage extends BaseClass {
     
     @FindBy(xpath = "//button[.//i[contains(@class,'bi-pencil-fill')]]")
     private WebElement btnEdit;
+    
+    @FindBy(xpath = "//button[.//i[contains(@class,'bi-trash')]]")
+    private WebElement btnDelete;
+    
+    @FindBy(xpath = "//button[normalize-space()='Yes, Delete']")
+    private WebElement btnConfirmDelete;
+    
+    @FindBy(xpath = "//span[text()='No Records Found']")
+    private WebElement noRecordsFound;
 
     public void enterEmployeeName(String employeeName) {
         sendKeys(txtEmployeeName, employeeName);
@@ -59,5 +68,30 @@ public class EmployeeListPage extends BaseClass {
     
     public boolean isEmployeeDisplayed() {
         return isElementDisplayed(employeeResult);
+    }
+    
+    public void clickDelete() {
+
+    	  waitUntilLoaderDisappears();
+
+    	    waitUntilElementIsClickable(btnDelete, 10);
+
+    	    clickOnAElement(btnDelete);
+
+    }
+
+    public void confirmDelete() {
+
+        waitUntilElementIsClickable(btnConfirmDelete,10);
+        clickOnAElement(btnConfirmDelete);
+
+    }
+
+    public boolean isNoRecordsDisplayed() {
+
+        waitUntilElementIsVisible(noRecordsFound,10);
+
+        return isElementDisplayed(noRecordsFound);
+
     }
 }

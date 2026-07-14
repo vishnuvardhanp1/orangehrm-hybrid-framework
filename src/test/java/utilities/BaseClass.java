@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,7 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class BaseClass {
-public static WebDriver driver;//class level or instance variable
+	private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();//class level or instance variable
 	
 public String readDataFromPropertyFile(String key) {
 
@@ -39,30 +40,35 @@ public String readDataFromPropertyFile(String key) {
 public void launchBrowser() {
 	 	String browserName = readDataFromPropertyFile("browser");
 
-	    if (browserName.equalsIgnoreCase("chrome")) {
+	 	if (browserName.equalsIgnoreCase("chrome")) {
 
-	        driver = new ChromeDriver();
+	 	    driver.set(new ChromeDriver());
 
-	    } else if (browserName.equalsIgnoreCase("edge")) {
+	 	} else if (browserName.equalsIgnoreCase("edge")) {
 
-	        driver = new EdgeDriver();
+	 	    driver.set(new EdgeDriver());
 
-	    } else {
+	 	} else {
 
 	        throw new RuntimeException("Invalid Browser Name : " + browserName);
 	    }
 
-	    driver.manage().window().maximize();
+	    getDriver().manage().window().maximize();
 
-	    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	    getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-	    driver.get(readDataFromPropertyFile("url"));
+	    getDriver().get(readDataFromPropertyFile("url"));
+	    new WebDriverWait(getDriver(), Duration.ofSeconds(20))
+        .until(webDriver ->
+            ((JavascriptExecutor) webDriver)
+                    .executeScript("return document.readyState")
+                    .equals("complete"));
 }
 
 
 
 public String getPageTitle() {
-	return driver.getTitle();
+	return getDriver().getTitle();
 } //this method is giving you the actual value
 
 public void sendKeys(WebElement element, String text) {
@@ -74,14 +80,14 @@ public void clickOnAElement(WebElement element) {
 }
 
 public String getCurrentUrl() {
-	return driver.getCurrentUrl();
+	return getDriver().getCurrentUrl();
 }
 public void scrollToAnElement(WebElement element) {
-	JavascriptExecutor js = (JavascriptExecutor)driver;
-	js.executeScript("arguments[0].scrollIntoView();", element);
+    JavascriptExecutor js = (JavascriptExecutor) getDriver();
+    js.executeScript("arguments[0].scrollIntoView();", element);
 }
 public void waitUntilElementIsVisible(WebElement element, int time) {
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+	WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(time));
 	wait.until(ExpectedConditions.visibilityOf(element));
 }
 
@@ -94,12 +100,12 @@ public String getText(WebElement element) {
 }
 
 public void waitUntilElementIsClickable(WebElement element, int time) {
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+    WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(time));
     wait.until(ExpectedConditions.elementToBeClickable(element));
 }
 
 public void waitUntilElementIsInvisible(WebElement element, int time) {
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+    WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(time));
     wait.until(ExpectedConditions.invisibilityOf(element));
 }
 
@@ -129,15 +135,30 @@ public boolean isElementEnabled(WebElement element) {
 }
 
 public void javascriptClick(WebElement element) {
-    JavascriptExecutor js = (JavascriptExecutor) driver;
+    JavascriptExecutor js = (JavascriptExecutor) getDriver();
     js.executeScript("arguments[0].click();", element);
+}
+
+public void waitUntilLoaderDisappears() {
+
+    WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(15));
+
+    wait.until(ExpectedConditions.invisibilityOfElementLocated(
+            By.cssSelector(".oxd-form-loader")));
 }
 
 public void closeBrowser() {
 
-    if (driver != null) {
-        driver.quit();
-    }
+	 WebDriver webDriver = getDriver();
+
+	    if (webDriver != null) {
+	        webDriver.quit();
+	        driver.remove();
+	    }
+}
+
+public static WebDriver getDriver() {
+    return driver.get();
 }
 	
 }

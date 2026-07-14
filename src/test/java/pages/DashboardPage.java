@@ -10,7 +10,7 @@ import utilities.BaseClass;
 public class DashboardPage extends BaseClass {
 
     public DashboardPage() {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     @FindBy(xpath = "//h6[text()='Dashboard']")

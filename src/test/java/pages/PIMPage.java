@@ -9,7 +9,7 @@ import utilities.BaseClass;
 public class PIMPage extends BaseClass {
 
     public PIMPage() {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     @FindBy(xpath = "//a[text()='Add Employee']")

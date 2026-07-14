@@ -8,7 +8,7 @@ import utilities.BaseClass;
 
 public class LoginPage extends BaseClass{
 	   public LoginPage() {
-	        PageFactory.initElements(driver, this);
+	        PageFactory.initElements(getDriver(), this);
 	    }
 
 	    @FindBy(name = "username")

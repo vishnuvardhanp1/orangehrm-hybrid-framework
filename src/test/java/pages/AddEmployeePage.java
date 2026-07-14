@@ -9,7 +9,7 @@ import utilities.BaseClass;
 public class AddEmployeePage extends BaseClass {
 
     public AddEmployeePage() {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     @FindBy(name = "firstName")

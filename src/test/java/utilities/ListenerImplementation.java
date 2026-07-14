@@ -1,9 +1,11 @@
 package utilities;
-
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.time.Duration;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -15,115 +17,133 @@ import org.testng.ITestResult;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.model.Report;
-import com.google.common.io.Files;
 
-public class ListenerImplementation  extends BaseClass implements ITestListener {
-	private static ExtentReports extentReport =
-	        ExtentReportsProgram.getReportInstance();
 
-	private static ExtentTest extentTest;
-	
-	@Override
-	public void onTestStart(ITestResult result) {
-		System.out.println(result.getName()+" Test Started");//prints the testcase name which has started
-		 extentTest = extentReport.createTest(result.getName());
-	}
-	@Override
-	public void onTestSuccess(ITestResult result) {
-	    System.out.println(result.getName() + " Test Passed");
-	    extentTest.pass("Test Passed");
+public class ListenerImplementation extends BaseClass implements ITestListener {
+	private static final Logger logger =
+			LogManager.getLogger(ListenerImplementation.class);
+    private static ExtentReports extentReport =
+            ExtentReportsProgram.getReportInstance();
 
-	    if(driver != null) {
-	    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+    private static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
 
-	    	wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
-			TakesScreenshot screenshot = (TakesScreenshot)driver;
-			File src = screenshot.getScreenshotAs(OutputType.FILE);
-			File folder = new File("./Screenshots");
-			String fileName = result.getName() + "_" + System.currentTimeMillis() + ".png";
-			
-			if (!folder.exists()) {
-			    folder.mkdirs();
-			}
-			
-			File destFile = new File("./Screenshots/" + fileName);
-			
-			try {
-				Files.copy(src, destFile);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			String screenshotPath = destFile.getAbsolutePath();
-			extentTest.pass("Test Passed")
-	          .addScreenCaptureFromPath(screenshotPath);
-			
-			}
-	}
-		
-	@Override
-	public void onTestFailure(ITestResult result) {
-		System.out.println(result.getName() + " Test Failed");
-		System.out.println("Reason : " + result.getThrowable());
-	    extentTest.fail(result.getThrowable());
+    @Override
+    public void onTestStart(ITestResult result) {
 
-		if(driver != null) {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+    	logger.info(result.getName() + " Test Started");
 
-	    	wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
-		TakesScreenshot screenshot = (TakesScreenshot)driver;
-		File src = screenshot.getScreenshotAs(OutputType.FILE);
-		File folder = new File("./Screenshots");
-		if (!folder.exists()) {
-		    folder.mkdirs();
-		}
+        extentTest.set(extentReport.createTest(result.getName()));
+    }
 
-		File destFile = new File(folder, result.getName() + ".png");
+    @Override
+    public void onTestSuccess(ITestResult result) {
 
-		String screenshotPath = destFile.getAbsolutePath();
-		extentTest.pass("Test Passed")
-          .addScreenCaptureFromPath(screenshotPath);
-		try {
-			Files.copy(src, destFile);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		}
+    	logger.info(result.getName() + " Test Passed");
 
-	    
-	}
+        extentTest.get().pass("Test Passed");
 
-	@Override
-	public void onTestSkipped(ITestResult result) {
-		System.out.println(result.getName() + " Test Skipped");
-		extentTest.skip("Test Skipped");
-	}
+        if (getDriver() != null) {
 
-	@Override
-	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-		// TODO Auto-generated method stub
-		 System.out.println(result.getName()
-		            + " failed but is within the configured success percentage.");
-	}
-	
-	@Override
-	public void onStart(ITestContext context) {
-		 System.out.println("Execution Started");
-		
-	}
+            try {
 
-	@Override
-	public void onFinish(ITestContext context) {
-		// TODO Auto-generated method stub
-		extentReport.flush();
+                WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(3));
+                wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
 
-	    System.out.println("===== Execution Summary =====");
+                TakesScreenshot screenshot = (TakesScreenshot) getDriver();
+                File src = screenshot.getScreenshotAs(OutputType.FILE);
 
-	    System.out.println("Passed : " + context.getPassedTests().size());
-	    System.out.println("Failed : " + context.getFailedTests().size());
-	    System.out.println("Skipped : " + context.getSkippedTests().size());
+                File folder = new File("./Screenshots");
+                if (!folder.exists()) {
+                    folder.mkdirs();
+                }
 
-	    System.out.println("=============================");
-	}
+                String fileName = result.getName() + "_" + System.currentTimeMillis() + ".png";
+                File destFile = new File(folder, fileName);
+
+                Files.copy(src.toPath(), destFile.toPath());
+
+                extentTest.get()
+                          .pass("Screenshot")
+                          .addScreenCaptureFromPath(destFile.getAbsolutePath());
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void onTestFailure(ITestResult result) {
+
+    	logger.info(result.getName() + " Test Failed");
+    	logger.info("Reason : " + result.getThrowable());
+
+        extentTest.get().fail(result.getThrowable());
+
+        if (getDriver() != null) {
+
+            try {
+
+                WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(3));
+                wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
+
+                TakesScreenshot screenshot = (TakesScreenshot) getDriver();
+                File src = screenshot.getScreenshotAs(OutputType.FILE);
+
+                File folder = new File("./Screenshots");
+                if (!folder.exists()) {
+                    folder.mkdirs();
+                }
+
+                String fileName = result.getName() + "_" + System.currentTimeMillis() + ".png";
+                File destFile = new File(folder, fileName);
+
+                Files.copy(src.toPath(), destFile.toPath());
+
+                extentTest.get()
+                          .fail("Failure Screenshot")
+                          .addScreenCaptureFromPath(destFile.getAbsolutePath());
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void onTestSkipped(ITestResult result) {
+
+    	logger.info(result.getName() + " Test Skipped");
+
+        extentTest.get().skip("Test Skipped");
+    }
+
+    @Override
+    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+
+    	logger.info(result.getName()
+                + " failed but is within the configured success percentage.");
+    }
+
+    @Override
+    public void onStart(ITestContext context) {
+
+        System.out.println("Execution Started");
+    }
+
+    @Override
+    public void onFinish(ITestContext context) {
+
+        extentReport.flush();
+
+        extentTest.remove();
+
+        logger.info("===== Execution Summary =====");
+
+        logger.info("Passed : " + context.getPassedTests().size());
+        logger.info("Failed : " + context.getFailedTests().size());
+        logger.info("Skipped : " + context.getSkippedTests().size());
+
+        logger.info("=============================");
+    }
 }
