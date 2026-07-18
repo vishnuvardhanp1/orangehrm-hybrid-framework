@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="OrangeHRM Suite" parallel="classes" thread-count="5">
+<suite name="OrangeHRM Suite" parallel="false" thread-count="5">
 
     <test name="OrangeHRM Tests">
 
@@ -10,7 +10,8 @@
             <class name="testClasses.LoginTest"/>
             <class name="testClasses.AddEmployeeTest"/>
             <class name="testClasses.SearchEmployeeTest"/>
-         
+            <class name="testClasses.EditEmployeeTest"/>
+            <class name="testClasses.DeleteEmployeeTest"/>
         </classes>
 
     </test>
