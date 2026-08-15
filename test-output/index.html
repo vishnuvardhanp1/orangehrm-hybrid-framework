@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-OrangeHRM_Suite" class="navigator-link">
-              <span class="suite-name border-skipped">OrangeHRM Suite</span>
+              <span class="suite-name border-passed">OrangeHRM Suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -92,21 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">6 methods,  1 skipped,  5 passed</span>
-                  </li>
-                  <li>
-                    <span class="method-list-title skipped">Retried methods</span>
-                    <span class="show-or-hide-methods skipped">
-                      <a href="#" panel-name="suite-OrangeHRM_Suite" class="hide-methods skipped suite-OrangeHRM_Suite"> (hide)</a> <!-- hide-methods skipped suite-OrangeHRM_Suite -->
-                      <a href="#" panel-name="suite-OrangeHRM_Suite" class="show-methods skipped suite-OrangeHRM_Suite"> (show)</a> <!-- show-methods skipped suite-OrangeHRM_Suite -->
-                    </span>
-                    <div class="method-list-content skipped suite-OrangeHRM_Suite">
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-OrangeHRM_Suite" title="testClasses.EditEmployeeTest" class="method navigator-link" hash-for-method="verifyEditEmployee">verifyEditEmployee</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content skipped suite-OrangeHRM_Suite -->
+                    <span class="method-stats">5 methods,   5 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -152,48 +138,6 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-OrangeHRM_Suite" class="panel OrangeHRM_Suite">
-          <div class="suite-OrangeHRM_Suite-class-skipped">
-            <div class="main-panel-header rounded-window-top">
-              <img src="skipped.png"/>
-              <span class="class-name">testClasses.EditEmployeeTest</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="verifyEditEmployee">
-                  </a> <!-- verifyEditEmployee -->
-                  <span class="method-name">verifyEditEmployee</span>
-                  <div class="stack-trace">org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found in the current frame
-  (Session info: chrome=150.0.7871.115)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
-Build info: version: &apos;4.39.0&apos;, revision: &apos;126f156aee&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [533f6c52331b97a313ce021fc8c18b09, clickElement {id=f.14953D68CF2655BB3146F2189E104CCD.d.91E2990242CC9CA8FC60DEBCE3748386.e.3550}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 150.0.7871.115, chrome: {chromedriverVersion: 150.0.7871.124 (9261fd0a595..., userDataDir: C:\Users\VISHNU~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63483}, goog:processID: 29352, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63483/devtoo..., se:cdpVersion: 150.0.7871.115, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (533f6c52331b97a313ce021fc8c18b09)] -&gt; xpath: //button[.//i[contains(@class,&apos;bi-pencil-fill&apos;)]]]
-Session ID: 533f6c52331b97a313ce021fc8c18b09
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:142)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:561)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
-	at jdk.proxy2/jdk.proxy2.$Proxy32.click(Unknown Source)
-	at utilities.BaseClass.clickOnAElement(BaseClass.java:79)
-	at pages.EmployeeListPage.clickEdit(EmployeeListPage.java:66)
-	at testClasses.EditEmployeeTest.verifyEditEmployee(EditEmployeeTest.java:47)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-... Removed 30 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-OrangeHRM_Suite-class-skipped -->
           <div class="suite-OrangeHRM_Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -326,36 +270,32 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(6);
+data.addRows(5);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifyDeleteEmployee')
-data.setCell(0, 2, 'testClasses.DeleteEmployeeTest')
-data.setCell(0, 3, 15540);
+data.setCell(0, 1, 'verifyEditEmployee')
+data.setCell(0, 2, 'testClasses.EditEmployeeTest')
+data.setCell(0, 3, 25148);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'verifyAddEmployee')
-data.setCell(1, 2, 'testClasses.AddEmployeeTest')
-data.setCell(1, 3, 9241);
+data.setCell(1, 1, 'verifyValidLogin')
+data.setCell(1, 2, 'testClasses.LoginTest')
+data.setCell(1, 3, 20947);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'verifyEditEmployee')
-data.setCell(2, 2, 'testClasses.EditEmployeeTest')
-data.setCell(2, 3, 6563);
+data.setCell(2, 1, 'verifyDeleteEmployee')
+data.setCell(2, 2, 'testClasses.DeleteEmployeeTest')
+data.setCell(2, 3, 20284);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'verifyEditEmployee')
-data.setCell(3, 2, 'testClasses.EditEmployeeTest')
-data.setCell(3, 3, 5097);
+data.setCell(3, 1, 'verifyAddEmployee')
+data.setCell(3, 2, 'testClasses.AddEmployeeTest')
+data.setCell(3, 3, 9852);
 data.setCell(4, 0, 4)
 data.setCell(4, 1, 'verifySearchEmployee')
 data.setCell(4, 2, 'testClasses.SearchEmployeeTest')
-data.setCell(4, 3, 4763);
-data.setCell(5, 0, 5)
-data.setCell(5, 1, 'verifyValidLogin')
-data.setCell(5, 2, 'testClasses.LoginTest')
-data.setCell(5, 3, 2411);
+data.setCell(4, 3, 6877);
 window.suiteTableData['OrangeHRM_Suite']= { tableData: data, tableDiv: 'times-div-OrangeHRM_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 43 seconds</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-OrangeHRM_Suite">
               </div> <!-- times-div-OrangeHRM_Suite -->
             </div> <!-- times-div -->
@@ -388,83 +328,71 @@ return data;
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyValidLogin</span>
-                <span class="method-start">4570 ms</span>
+                <span class="method-start">88292 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">7305 ms</span>
+                <span class="method-start">109624 ms</span>
               </div> <!-- configuration-method after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">testClasses.AddEmployeeTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">setUp</span>
-                <span class="method-start">7556 ms</span>
+                <span class="method-start">109912 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyAddEmployee(Vishnu, Vardhan, P)</span>
-                <span class="method-start">11795 ms</span>
+                <span class="method-start">154080 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">21215 ms</span>
+                <span class="method-start">164352 ms</span>
               </div> <!-- configuration-method after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">testClasses.SearchEmployeeTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">setUp</span>
-                <span class="method-start">22204 ms</span>
+                <span class="method-start">164546 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifySearchEmployee</span>
-                <span class="method-start">26301 ms</span>
+                <span class="method-start">213914 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">31240 ms</span>
+                <span class="method-start">220909 ms</span>
               </div> <!-- configuration-method after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">testClasses.EditEmployeeTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">setUp</span>
-                <span class="method-start">31456 ms</span>
+                <span class="method-start">221099 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyEditEmployee</span>
-                <span class="method-start">35218 ms</span>
+                <span class="method-start">233412 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">40320 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="configuration-method before">
-                <span class="method-name">setUp</span>
-                <span class="method-start">40535 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="test-method">
-                <span class="method-name">verifyEditEmployee</span>
-                <span class="method-start">44489 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">tearDown</span>
-                <span class="method-start">51183 ms</span>
+                <span class="method-start">258693 ms</span>
               </div> <!-- configuration-method after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">testClasses.DeleteEmployeeTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">setUp</span>
-                <span class="method-start">51371 ms</span>
+                <span class="method-start">258967 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyDeleteEmployee</span>
-                <span class="method-start">55378 ms</span>
+                <span class="method-start">267445 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">71127 ms</span>
+                <span class="method-start">287861 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

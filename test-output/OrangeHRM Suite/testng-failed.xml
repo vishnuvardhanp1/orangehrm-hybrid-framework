@@ -3,6 +3,27 @@
 <suite name="Failed suite [OrangeHRM Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="OrangeHRM Tests(failed)">
     <classes>
+      <class name="testClasses.AddEmployeeTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="verifyAddEmployee" invocation-numbers="0"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- testClasses.AddEmployeeTest -->
+      <class name="testClasses.DeleteEmployeeTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="verifyDeleteEmployee"/>
+        </methods>
+      </class> <!-- testClasses.DeleteEmployeeTest -->
+      <class name="testClasses.SearchEmployeeTest">
+        <methods>
+          <include name="verifySearchEmployee"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- testClasses.SearchEmployeeTest -->
       <class name="testClasses.EditEmployeeTest">
         <methods>
           <include name="verifyEditEmployee"/>
@@ -10,6 +31,13 @@
           <include name="tearDown"/>
         </methods>
       </class> <!-- testClasses.EditEmployeeTest -->
+      <class name="testClasses.LoginTest">
+        <methods>
+          <include name="verifyValidLogin"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- testClasses.LoginTest -->
     </classes>
   </test> <!-- OrangeHRM Tests(failed) -->
 </suite> <!-- Failed suite [OrangeHRM Suite] -->
