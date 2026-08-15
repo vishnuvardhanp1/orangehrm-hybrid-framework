@@ -93,30 +93,7 @@ Log4j2 is used for execution logging, debugging, and tracking test execution.
 
 ---
 
-# Parallel Execution
 
-The framework supports parallel execution using TestNG with ThreadLocal WebDriver implementation.
-
-Example `testng.xml`
-
-```xml
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-
-<suite name="OrangeHRM Suite"
-       parallel="classes"
-       thread-count="3">
-
-    <test name="OrangeHRM Tests">
-
-        <classes>
-            <class name="testCases.LoginTest"/>
-            <class name="testCases.AddEmployeeTest"/>
-            <class name="testCases.SearchEmployeeTest"/>
-        </classes>
-
-    </test>
-
-</suite>
 ```
 
 ---
