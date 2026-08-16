@@ -10,8 +10,8 @@
             <class name="testClasses.LoginTest"/>
             <class name="testClasses.AddEmployeeTest"/>
             <class name="testClasses.SearchEmployeeTest"/>
-        <!--    <class name="testClasses.EditEmployeeTest"/>
-            <class name="testClasses.DeleteEmployeeTest"/> -->
+         <class name="testClasses.EditEmployeeTest"/>
+            <class name="testClasses.DeleteEmployeeTest"/> 
         </classes>
 
     </test>
